@@ -299,10 +299,7 @@ C                                                  TO  SM
                IEQ = MEEN(I)
                IF (IEQ.EQ.0)   GO TO 400
                IF (IEQ.LT.0)   GO TO 360
-               IF (IEQ.ne.JEQ) GO TO 350
-               SM(ieq,jeq) = SM(ieq,jeq) + (TTCC(JP)+TTCC(JP))*EM(I,J)
-               GO TO 400
-  350          SM(ieq,jeq) = SM(ieq,jeq) + TTCC(JP)*EM(I,J)
+               SM(ieq,jeq) = SM(ieq,jeq) + TTCC(JP)*EM(I,J)
                SM(jeq,ieq) = SM(jeq,ieq) + TTCC(JP)*EM(J,I)
                GO TO 400
 C
