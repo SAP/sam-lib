@@ -249,7 +249,9 @@ C     ----------------------------------------------------
          ENDIF
          CALL SPRER1 ( 40, 'SPRFC2', NUMNEG, SUPEQT, LIERR, LPU, IERR )
          MSPAR(27) = SUPEQT
-         IF ( LIERR .EQ. -30 ) WRITE(LPU,600) TOL, TOL(2)/ABS(TOL(3))
+         IF ( LIERR .EQ. -30 .AND. LPU.GE.0) THEN
+            WRITE(LPU,600) TOL, TOL(2)/ABS(TOL(3))
+         ENDIF
       ENDIF
 
       MSPAR(26) = NUMNEG

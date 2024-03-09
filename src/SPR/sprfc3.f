@@ -282,6 +282,7 @@ C     END OF MODULE SPRFC3
       SUBROUTINE   SPRF3N   ( N     , DCOR  , LPU    )
       INTEGER                 N     , LPU   , I
       DOUBLE PRECISION        DCOR(2,N)
+      IF (LPU .LT. 0) RETURN
       DO I = 1, N
          IF (DCOR(1,I) .LT. 0.0D0) WRITE(LPU,610) I,DCOR(1,I)
       END DO
@@ -294,6 +295,7 @@ C     END OF MODULE SPRFC3
       SUBROUTINE   SPRF3P   ( N     , NSING , TOL   , DCOR  , LPU    )
       INTEGER                 N     , NSING , LPU   , I     , J
       DOUBLE PRECISION        TOL   , DCOR(2,N)
+      IF (LPU .LT. 0) RETURN
       WRITE(LPU,600) TOL, NSING
       DO I = 1, N
          IF (DCOR(2,I) .NE. 0.0D0) WRITE(LPU,610) I,(DCOR(J,I),J=1,2)
@@ -361,7 +363,7 @@ C     END OF MODULE SPRFC3
             RHS(I,J) = 0.0D0
   100    CONTINUE
   200 CONTINUE
-      WRITE(LPU,600)
+      IF (LPU.GE.0) WRITE(LPU,600)
       RETURN
   600 FORMAT(5X,'THE ABOVE EQUATIONS ARE AUTOMATICALLY SUPPRESSED'/)
       END
